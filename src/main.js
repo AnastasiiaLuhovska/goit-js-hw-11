@@ -6,7 +6,8 @@ import SimpleLightbox from "simplelightbox";
 
 const refs = {
   form: document.querySelector('.form'),
-  gallery: document.querySelector('.gallery')
+  gallery: document.querySelector('.gallery'),
+  loader: document.querySelector('.loader')
 }
 
 
@@ -37,3 +38,4 @@ const handleSubmit = (event) =>{
 
 refs.form.addEventListener('submit', handleSubmit)
 
+refs.loader.classList.add('hidden')
