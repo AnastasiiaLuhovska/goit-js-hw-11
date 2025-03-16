@@ -3,7 +3,7 @@ import * as basicLightbox from 'basiclightbox';
 export const createCardHtml = ({webformatURL, largeImageURL, tags, likes, views, comments, downloads}) =>{
 
   const arrayOfTags = tags.split(',')
-  const filteredTags = arrayOfTags.filter((tag, index, array)=> index === array.indexOf(tag))
+  const filteredTags = arrayOfTags.filter((tag, index, array)=> index === array.indexOf(tag)).join(',')
 
   return `<li>
       <a class ="link" href="${largeImageURL}">
