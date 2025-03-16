@@ -1,6 +1,9 @@
 import * as basicLightbox from 'basiclightbox';
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+import { refs } from '../main.js';
 
-export const createCardHtml = ({webformatURL, largeImageURL, tags, likes, views, comments, downloads}) =>{
+const createCardHtml = ({webformatURL, largeImageURL, tags, likes, views, comments, downloads}) =>{
 
   const arrayOfTags = tags.split(',')
   const filteredTags = arrayOfTags.filter((tag, index, array)=> index === array.indexOf(tag)).join(',')
@@ -32,3 +35,10 @@ export const createCardHtml = ({webformatURL, largeImageURL, tags, likes, views,
 
 export const instance = basicLightbox.create(`<span class="loader"></span>`)
 
+
+export const renderCards = (response)=>{
+  const cardsMarkup = response.data.hits.map(obj => createCardHtml(obj)).join('')
+  refs.gallery.innerHTML = cardsMarkup
+  const lightbox = new SimpleLightbox('.link', {captionsData: 'alt'});
+  lightbox.refresh();
+}
